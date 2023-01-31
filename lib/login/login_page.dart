@@ -14,7 +14,9 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin{
   late Animation<double> _animation;
   late AnimationController _animationController;
   FocusNode _passFocus = FocusNode();
-  final TextEditingController _textEditingController = TextEditingController(text: '');
+  final TextEditingController _textEditingController1 = TextEditingController(text: '');
+  final TextEditingController _textEditingController2 = TextEditingController(text: '');
+  bool _obscureText = true;
   final _loginKey = GlobalKey<FormState>();
 
   @override
@@ -88,7 +90,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin{
                               focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20),),
                             ),
                             keyboardType: TextInputType.emailAddress,
-                            controller: _textEditingController,
+                            controller: _textEditingController1,
                             validator: (value){
                               if(value!.isEmpty || !value.contains('@')){
                                 return "correct email";
@@ -98,7 +100,36 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin{
                               }
                             },
                           
-                          )
+                          ),
+                          SizedBox(height:MediaQuery.of(context).size.height*0.03),
+                          TextFormField(
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.visiblePassword,
+                            onEditingComplete: ()=>FocusScope.of(context).requestFocus(_passFocus),style: TextStyle(color: Colors.amberAccent,fontWeight: FontWeight.bold,),
+                            obscureText: !_obscureText,
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              hintText: 'password',
+                              suffixIcon: GestureDetector(
+                                onTap: (){
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                              ),
+                              hintStyle: TextStyle(color:Colors.white),
+                              // focusColor: Colors.deepPurple,
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              )
+                            ),
+                            controller: _textEditingController2,
+                          ),
                         ],
                     )),
                   )
