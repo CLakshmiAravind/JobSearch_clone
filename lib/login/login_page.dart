@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin{
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.visiblePassword,
                             onEditingComplete: ()=>FocusScope.of(context).requestFocus(_passFocus),style: TextStyle(color: Colors.amberAccent,fontWeight: FontWeight.bold,),
-                            obscureText: !_obscureText,
+                            obscureText: _obscureText,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20)
@@ -121,6 +121,9 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin{
                                     _obscureText = !_obscureText;
                                   });
                                 },
+                                child: Icon(
+                                  _obscureText ? Icons.visibility : Icons.visibility_off
+                                ),
                               ),
                               hintStyle: TextStyle(color:Colors.white),
                               // focusColor: Colors.deepPurple,
