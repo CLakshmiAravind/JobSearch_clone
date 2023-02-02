@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../ForgotPassword/forgot_passwd_screen.dart';
 import '../services/global_method.dart';
 import '../services/global_variables.dart';
-
+import 'package:jobs_/SignUp/sign_up.dart';
 class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -27,6 +27,9 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   void dispose() {
     // TODO: implement dispose
     _animationController.dispose();
+    _textEditingController1.dispose();
+    _textEditingController2.dispose();
+    _passFocus.dispose();
     super.dispose();
   }
 
@@ -74,6 +77,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           CachedNetworkImage(
@@ -93,9 +97,9 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               children: [
                 Container(
                   // height: 100,
-                  width: MediaQuery.of(context).size.width * 0.5,
+                  width: MediaQuery.of(context).size.width * 0.7,
                   // width: 150,
-                  height: MediaQuery.of(context).size.height * 0.2,
+                  height: MediaQuery.of(context).size.height * 0.4,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/login.png')),
@@ -207,6 +211,15 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Don't you have an account",style: TextStyle(color: Colors.white),),
+                              TextButton(onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: ((context) => SignUp())));
+                              }, child: Text('Sign Up',style: TextStyle(color: Colors.blue),)),
+                            ],
                           )
                         ],
                       )),
