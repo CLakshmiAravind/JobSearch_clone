@@ -41,8 +41,8 @@ class _SignUpState extends State<SignUp> {
                     child: imageFile ==null 
                     ? Icon(Icons.camera_enhance_rounded,color: Colors.grey,):Image.file(imageFile!,fit: BoxFit.fill,),
                   ),
-                ),
-              ),
+                ), 
+              ),// to display photo, if photo is not present then it shows camera icon
               ],
             )),
           ],
