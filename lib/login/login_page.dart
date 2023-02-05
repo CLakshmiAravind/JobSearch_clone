@@ -177,6 +177,14 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                   borderRadius: BorderRadius.circular(20),
                                 )),
                             controller: _textEditingController2,
+                            validator: (value){
+                              if (value!.isEmpty ){
+                                return "valid password";
+                              }
+                              else{
+                                return null;
+                              }
+                            }
                           ),
                           SizedBox(
                               height:
