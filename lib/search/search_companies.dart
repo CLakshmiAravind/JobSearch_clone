@@ -1,33 +1,27 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/bottom_nav_bar.dart';
 
-class JobScreen extends StatefulWidget {
-  const JobScreen({super.key});
+class SearchCompanies extends StatefulWidget {
+  const SearchCompanies({super.key});
 
   @override
-  State<JobScreen> createState() => _JobScreenState();
+  State<SearchCompanies> createState() => _SearchCompaniesState();
 }
 
-class _JobScreenState extends State<JobScreen> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+class _SearchCompaniesState extends State<SearchCompanies> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.orange.shade300, Colors.purple.shade300],
-          begin: Alignment.bottomRight,
-          end: Alignment.bottomLeft,
-          stops: [0.2, 0.9],
-        ),
-      ),
+          gradient: LinearGradient(
+              colors: [Colors.orange.shade300, Colors.purple.shade300],
+              begin: Alignment.bottomRight,
+              end: Alignment.bottomLeft,
+              stops: [0.2, 0.9])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          centerTitle: true,
           leading: Container(),
           backgroundColor: Colors.transparent,
           title: Container(
@@ -39,11 +33,11 @@ class _JobScreenState extends State<JobScreen> {
                 stops: [0.2, 0.9],
               ),
             ),
-            child: Text("Job_Screen"),
+            child: Text("search"),
           ),
+          centerTitle: true,
         ),
-        
-        bottomNavigationBar: BottomNavBar(indexNum: 0),
+        bottomNavigationBar: BottomNavBar(indexNum: 1,),
       ),
     );
   }
